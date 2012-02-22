@@ -33,7 +33,7 @@ class Game
 
     # Xキーが押下されたらプレイヤーは弾を発射する
     if Input.keyPush?(K_X)
-      @shouts << PlayerShout.new(self, @player.x, @player.y - 40)
+      @shouts << @player.shout
     end
 
     check_collision # 当たり判定の一括処理

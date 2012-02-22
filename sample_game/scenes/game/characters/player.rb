@@ -1,8 +1,14 @@
 require_relative  'character'
+require_relative  'player_shout'
 
 class Player < Character
   def hit(obj)
     puts "Hit to #{obj} by Player"
+  end
+
+  # ‹©‚ÔBŽÀÛ‚Í“G‚ð“|‚·’e‚ðì‚éB
+  def shout
+    return PlayerShout.new(@director, @x, @y)
   end
 
   private

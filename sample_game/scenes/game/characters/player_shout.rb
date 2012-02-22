@@ -1,10 +1,18 @@
 require_relative 'character'
 
 class PlayerShout < Character
+  DEFAULT_HP = 400
+
+  def initialize(director, x, y, hp = DEFAULT_HP)
+    super(director, x, y)
+    @hp = hp
+  end
+
   def move
     @y -= 10
     reset_collision_pos
-    remove if @y < 0
+    @hp -= 10
+    remove if @hp <= 0
   end
 
   def remove
