@@ -1,12 +1,20 @@
 require_relative 'character'
 
 class Box < Character
+  def initialize(director, x, y, image_file = nil)
+    super
+    @count = 0
+  end
 
   # ふわふわした動きを表現
   def move
-    @x += Math.cos(@x) * 17
-    @y += Math.cos(@y) * 9
-    reset_collision_pos
+    @count += 1
+    if @count >= 20
+      @count = 0
+      @x += Math.cos(@x) * 9
+      @y += Math.cos(@y) * 5
+      reset_collision_pos
+    end
   end
 
   # オブジェクトとぶつかった時の判定
