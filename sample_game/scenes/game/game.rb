@@ -15,7 +15,7 @@ class Game
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
-    @boxes  = [Box.new(self, 250, 170)]       # 敵キャラオブジェクトの配列を作成
+    @boxes  = []                              # 敵キャラオブジェクトの配列を作成
     @memory_chips = [MemoryChip.new(self, 100, 100)] # 記憶のかけらの配列を作成
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
@@ -37,6 +37,10 @@ class Game
     if Input.keyPush?(K_X)
       return if @player.hp == 0
       @shouts << @player.shout#<<はpush配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
+    end
+
+    if(rand(200) == 1)
+      @boxes << Box.new(self, rand(700)+50, rand(500)+50)
     end
 
     check_collision # 当たり判定の一括処理
