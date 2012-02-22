@@ -34,6 +34,7 @@ class Game
 
     # Xキーが押下されたらプレイヤーは弾を発射する
     if Input.keyPush?(K_X)
+      return if @player.hp == 0
       @shouts << @player.shout#<<はpush配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
     end
 
