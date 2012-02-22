@@ -1,6 +1,6 @@
 require_relative File.join('characters', 'player')
-require_relative File.join('characters', 'player_shot')
-require_relative File.join('characters', 'enemy')
+require_relative File.join('characters', 'player_shout')
+require_relative File.join('characters', 'box')
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -9,13 +9,13 @@ require_relative File.join('effects', 'crash_effect')
 
 
 class Game
-  attr_accessor :player, :enemies, :shots, :effects, :map
+  attr_accessor :player, :boxes, :shouts, :effects, :map
 
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 550)      # プレイヤーオブジェクトを生成
-    @enemies  = [Enemy.new(self, 250, 170)]   # 敵キャラオブジェクトの配列を作成
-    @shots = []                               # 弾丸の配列を初期化
+    @boxes  = [Box.new(self, 250, 170)]       # 敵キャラオブジェクトの配列を作成
+    @shouts = []                               # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
   end
@@ -33,7 +33,7 @@ class Game
 
     # Xキーが押下されたらプレイヤーは弾を発射する
     if Input.keyPush?(K_X)
-      @shots << PlayerShot.new(self, @player.x, @player.y - 40)
+      @shouts << PlayerShout.new(self, @player.x, @player.y - 40)
     end
 
     check_collision # 当たり判定の一括処理
@@ -45,7 +45,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @enemies + @shots + @effects
+    return [@player] + @boxes + @shouts + @effects
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
