@@ -13,7 +13,7 @@ class Game
 
   # シーン情報の初期化
   def initialize
-    @player = Player.new(self, 400, 550)      # プレイヤーオブジェクトを生成
+    @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
     @boxes  = [Box.new(self, 250, 170)]       # 敵キャラオブジェクトの配列を作成
     @shouts = []                               # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
@@ -33,7 +33,7 @@ class Game
 
     # Xキーが押下されたらプレイヤーは弾を発射する
     if Input.keyPush?(K_X)
-      @shouts << @player.shout
+      @shouts << @player.shout#<<はpush配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
     end
 
     check_collision # 当たり判定の一括処理
