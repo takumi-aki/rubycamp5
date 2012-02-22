@@ -8,10 +8,10 @@ class Redbull < Character
   end
   
   def move
-    @count += 1
-    if @count >= 20
+    @count += 3
+    if @count >= 5
       @count = 0
-      @y += Math.cos(@y)
+      @y += Math.tanh(@y)
       reset_collision_pos
     end
   end
