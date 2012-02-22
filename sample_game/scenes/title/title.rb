@@ -37,7 +37,7 @@ class Title
   def play
     draw
     if Input.keyPush?(K_SPACE)
-      Scene.set_current_scene(:game)
+      Scene.set_current_scene(:opening)
     end
     if Input.keyPush?(K_ESCAPE)
       exit
