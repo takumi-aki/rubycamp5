@@ -14,7 +14,7 @@ class Player < Character
 
   # ‹©‚ÔBŽÀÛ‚Í“G‚ð“|‚·’e‚ðì‚éB
   def shout
-    @hp -= 10
+    @hp -= 10 if @hp > 0
     return PlayerShout.new(@director, @x, @y ,@hp)
   end
 

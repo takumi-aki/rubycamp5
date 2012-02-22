@@ -21,7 +21,7 @@ class MemoryChip < Character
   
   def char_image(image_file = nil)
     # •¶Žš‚ÌŽí—Þ‚É‚æ‚Á‚Ä‰æ‘œ‚ðØ‚è‘Ö‚¦‚é
-    image_file ||= File.join(File.dirname(__FILE__), "..", "images", "menemy_crashed.png")
+    image_file ||= File.join(File.dirname(__FILE__), "..", "images", "enemy_crashed.png")
     img = Image.load(image_file)
     img.setColorKey([0, 0, 0])
     return img
