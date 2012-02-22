@@ -1,6 +1,6 @@
 require_relative 'character'
 
-class MemoryChip < Character
+class MemoryPiece < Character
   def move
     #@y -= 2
     reset_collision_pos
@@ -8,7 +8,7 @@ class MemoryChip < Character
   end
   
   def remove
-    @director.memory_chips.delete_if {|memory_chip| memory_chip == self}
+    @director.memory_pieces.delete_if {|memory_piece| memory_piece == self}
   end
   
   def hit(obj)

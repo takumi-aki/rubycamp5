@@ -1,7 +1,7 @@
 require_relative File.join('characters', 'player')
 require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
-require_relative File.join('characters', 'memory_chip')
+require_relative File.join('characters', 'memory_piece')
 require_relative File.join('characters', 'timer')
 require_relative File.join('characters', 'hpgage')
 require_relative File.join('characters', 'redbull') #追加
@@ -18,7 +18,7 @@ class Game
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
     @boxes  = []                              # 敵キャラオブジェクトの配列を作成
-    @memory_chips = [MemoryChip.new(self, 100, 100)] # 記憶のかけらの配列を作成
+    @memory_pieces = [MemoryPiece.new(self, 100, 100)] # 記憶のかけらの配列を作成
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
@@ -64,7 +64,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @boxes + @shouts + @effects + @memory_chips + [@timer] + [@hpgage] + @redbull
+    return [@player] + @boxes + @shouts + @effects + @memory_pieces + [@timer] + [@hpgage] + @redbull
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
