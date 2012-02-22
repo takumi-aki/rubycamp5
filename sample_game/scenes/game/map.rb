@@ -5,10 +5,11 @@ class Map
 
   def move
     @count = @count + 1 #今何回呼ばれたか確認
-    if (@count % 3) == 0 # 十の倍数になったら = 10で割ったあまりが0だったら。剰余計算
-      @x = @x + 1
+    if (@count % 50) == 0 # 十の倍数になったら = 10で割ったあまりが0だったら。剰余計算
+      @x = @x + 40
+    elsif (@count % 6) == 0
+      @x = @x - 5
     end
-    
   end
 
   def initialize(player)
