@@ -3,6 +3,8 @@ require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
 require_relative File.join('characters', 'memory_chip')
 require_relative File.join('characters', 'timer')
+require_relative File.join('characters', 'hpgage')#追加
+
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -10,7 +12,7 @@ require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage
 
   # シーン情報の初期化
   def initialize
@@ -20,8 +22,9 @@ class Game
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
-    @timer = Timer.new(self, 100, 100, 60)    #追加
-    @first = true			      #追加
+    @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
+    @first = true			      #
+    @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
 
   end
 
@@ -62,7 +65,7 @@ class Game
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
 
-    return [@player] + @boxes + @shouts + @effects + @memory_chips + [@timer]
+    return [@player] + @boxes + @shouts + @effects + @memory_chips + [@timer] + [@hpgage]
 
   end
 
