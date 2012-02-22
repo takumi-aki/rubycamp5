@@ -15,9 +15,10 @@ class Game
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
     @boxes  = [Box.new(self, 250, 170)]       # 敵キャラオブジェクトの配列を作成
-    @shouts = []                               # 弾丸の配列を初期化
+    @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
+    @memory_chips = []
   end
 
   # 本シーンの主描画メソッド
