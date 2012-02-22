@@ -1,6 +1,7 @@
 require_relative File.join('characters', 'player')
 require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
+require_relative File.join('characters', 'memory_chip')
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -15,10 +16,10 @@ class Game
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
     @boxes  = [Box.new(self, 250, 170)]       # 敵キャラオブジェクトの配列を作成
+    @memory_chips = [MemoryChip.new(self, 100, 100)] # 記憶のかけらの配列を作成
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
-    @memory_chips = []
   end
 
   # 本シーンの主描画メソッド
@@ -47,7 +48,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @boxes + @shouts + @effects
+    return [@player] + @boxes + @shouts + @effects + @memory_chips
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
