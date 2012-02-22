@@ -9,7 +9,6 @@ require_relative 'map'
 require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
-
 class Game
   attr_accessor :player, :boxes, :shouts, :effects, :map, :timer
 

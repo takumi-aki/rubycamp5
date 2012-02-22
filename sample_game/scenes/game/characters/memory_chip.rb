@@ -1,11 +1,6 @@
 require_relative 'character'
 
 class MemoryChip < Character
-  def initialize(director, x, y)
-    super(director, x, y)
-    @alphabet = ("a".."z").to_a[(rand(26) + 1)]
-  end
-
   def move
     #@y -= 2
     reset_collision_pos
@@ -25,9 +20,10 @@ class MemoryChip < Character
   private
   
   def char_image(image_file = nil)
+    alphabet = ["ruby-r", "ruby-u", "ruby-b", "ruby-y",
+                "perl-p", "perl-e", "perl-r", "perl-l", ].sample
     # •¶Žš‚ÌŽí—Þ‚É‚æ‚Á‚Ä‰æ‘œ‚ðØ‚è‘Ö‚¦‚é
-    #image_file ||= File.join(File.dirname(__FILE__), "..", "images",  "#{@alphabet}.png")
-    image_file ||= File.join(File.dirname(__FILE__), "..", "images",  "enemy_crashed.png")
+    image_file ||= File.join(File.dirname(__FILE__), "..", "images",  "#{alphabet}.png")
     img = Image.load(image_file)
     img.setColorKey([0, 0, 0])
     return img
