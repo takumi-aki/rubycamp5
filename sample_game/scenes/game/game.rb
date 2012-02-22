@@ -5,7 +5,6 @@ require_relative File.join('characters', 'memory_chip')
 require_relative File.join('characters', 'timer')
 require_relative File.join('characters', 'hpgage')
 require_relative File.join('characters', 'redbull') #追加
-
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -65,9 +64,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-
     return [@player] + @boxes + @shouts + @effects + @memory_chips + [@timer] + [@hpgage] + @redbull
-
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
