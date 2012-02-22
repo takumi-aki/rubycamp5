@@ -13,7 +13,7 @@ class Ending
 
     # 定義したスタッフロールを、画面最下部から最上部までスクロールさせる。
     # その際、色は黄色で描画するように設定を変えてみる。
-    @scroll_text = ScrollText.new(@staff_roll, :color => [255, 255, 0])
+    @scroll_text = ScrollText.new(@staff_roll, :color => [255, 0, 255])
   end
 
   def draw
