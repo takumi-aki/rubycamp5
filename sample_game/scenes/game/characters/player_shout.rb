@@ -8,7 +8,7 @@ class PlayerShout < Character
   end
 
   def remove
-    @director.shots.delete_if {|shot| shot == self }
+    @director.shouts.delete_if {|shout| shout == self }
   end
 
   def hit(obj)

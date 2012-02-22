@@ -20,7 +20,7 @@ class Box < Character
   def crash
     crash_effect = CrashEffect.new(@director, @x, @y)
     @director.effects << crash_effect
-    @director.enemies.delete_if {|enemy| enemy == self }
+    @director.boxes.delete_if {|box| box == self }
   end
 
 
