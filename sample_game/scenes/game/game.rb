@@ -2,6 +2,7 @@ require_relative File.join('characters', 'player')
 require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
 require_relative File.join('characters', 'memory_chip')
+require_relative File.join('characters', 'timer')
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -10,7 +11,7 @@ require_relative File.join('effects', 'crash_effect')
 
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer
 
   # シーン情報の初期化
   def initialize
@@ -20,10 +21,17 @@ class Game
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
+    @timer = Timer.new(self, 100, 100, 60)    #追加
+    @first = true			      #追加
+
   end
 
   # 本シーンの主描画メソッド
   def play
+    if @first
+      @timer.start
+      @first = false#追加
+    end
     # まずは背景マップの描画を行う（drawメソッドはスクロール実行も兼ねる）
     @map.draw
 
@@ -52,7 +60,9 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @boxes + @shouts + @effects + @memory_chips
+
+    return [@player] + @boxes + @shouts + @effects + @memory_chips + [@timer]
+
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
