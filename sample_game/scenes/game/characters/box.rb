@@ -8,13 +8,13 @@ class Box < Character
 
   # ふわふわした動きを表現
   def move
-    @count += 1
-    if @count >= 20
+    #@count += 1
+    #if @count >= 20
       @count = 0
-      @x += Math.cos(@x) * 9
-      @y += Math.cos(@y) * 5
+      @x += Math.cos(@y+@x+@x)
+      @y += Math.cos(@x+@y)
       reset_collision_pos
-    end
+    #end
   end
 
   # オブジェクトとぶつかった時の判定

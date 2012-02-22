@@ -1,4 +1,5 @@
 require_relative  'character'
+require_relative 'player'
 
 # HPゲージを表現する。
 class Hpgage < Character
