@@ -22,7 +22,8 @@ class Box < Character
     # プレイヤー以外とぶつかった場合はなにもしない
     return unless obj.class == Player
     # プレイヤーとぶつかったときの処理
-    p "Damage to player!"
+    #p "Damage to player!"
+    Scene.set_current_scene(:badend)
   end
 
   def crash

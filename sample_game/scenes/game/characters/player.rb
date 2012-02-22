@@ -9,7 +9,9 @@ class Player < Character
   end
 
   def hit(obj)
-    puts "Hit to #{obj} by Player"
+    #puts "Hit to #{obj} by Player"
+    Scene.set_current_scene(:badend) if obj.class == Box#obj.instance_of?(Box)
+    p obj
   end
 
   # ‹©‚ÔBŽÀÛ‚Í“G‚ð“|‚·’e‚ðì‚éB

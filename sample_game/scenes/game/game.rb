@@ -26,6 +26,7 @@ class Game
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
     @redbull = [Redbull.new(self, 300, 200)]  # 水の配列を作成追加
+
   end
 
   # 本シーンの主描画メソッド
