@@ -32,6 +32,7 @@ class Game
       @first = false#追加
     end
     # まずは背景マップの描画を行う（drawメソッドはスクロール実行も兼ねる）
+    @map.move
     @map.draw
 
     # 画面上に描画するべき全ての要素を処理する
