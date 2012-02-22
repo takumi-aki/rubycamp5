@@ -4,8 +4,8 @@ class Box < Character
 
   # ‚Ó‚í‚Ó‚í‚µ‚½“®‚«‚ð•\Œ»
   def move
-    @x += rand(3) - 1
-    @y += rand(3) - 1
+    @x += Math.cos(@x) * 17
+    @y += Math.cos(@y) * 9
     reset_collision_pos
   end
 
