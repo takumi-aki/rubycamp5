@@ -53,6 +53,7 @@ class Game
 
     check_collision # 当たり判定の一括処理
     check_clear     # ゲームクリア条件の判定処理
+    check_badend    # ゲームオーバー条件の判定処理
   end
 
 
@@ -77,6 +78,13 @@ class Game
     if Input.keyPush?(K_RETURN)
       # シーンを切り替え、エンディングシーンへ遷移
       Scene.set_current_scene(:ending)
+    end
+  end
+ 
+  def check_badend
+    if Input.keyPush?(K_Z)
+     #  シーンを切り替え、バッドエンディングシーンへ遷移
+     Scene.set_current_scene(:badend)
     end
   end
 end
