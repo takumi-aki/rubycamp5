@@ -8,8 +8,7 @@ class Title
 
     # タイトル画面に表示する説明文を定義
     str  =<<-EOF
-本ゲームはRuby合宿2012春のための学習サンプルです。
-縦スクロール型シューティングゲームの素体です。
+(仮)本ゲームはRuby合宿2012春5班のシューティングゲームです。
     EOF
 
     # テキストオブジェクトを生成
@@ -20,7 +19,7 @@ class Title
                                      bold: true)
 
     # ゲームスタートを促すメッセージを作成
-    @announce_text = Text.new("スペースキーを押下してください。", 
+    @announce_text = Text.new("Please スペースキー", 
                                 color: [255, 255, 0],  # フォント色を黄色に設定
                                 y: 380, bold: true)
   end
@@ -39,6 +38,9 @@ class Title
     draw
     if Input.keyPush?(K_SPACE)
       Scene.set_current_scene(:game)
+    end
+    if Input.keyPush?(K_ESCAPE)
+      exit
     end
   end
 end
