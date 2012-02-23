@@ -4,10 +4,10 @@ class Character
   def initialize(director, x = 400, y = 550, image_file = nil)
     @director = director
     @x, @y = x, y
-    @image =char_image(image_file)
-    @distance = 2
+    @image = char_image(image_file)
+    @distance  = 2
     @collision = CollisionBox.new(self, 0, 0,
-                                   @image.width, @image.height)
+                                  @image.width, @image.height)
   end
 
   def move
