@@ -31,6 +31,7 @@ class Timer < Character
     Window.drawFont(@x, @y, sprintf("%05.2f", left_sec), @font)
     if left_sec == 0
       @timeouted = true
+      Scene.set_current_scene(:badend)
     end
   end
 end
