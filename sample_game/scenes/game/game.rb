@@ -3,8 +3,8 @@ require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
 require_relative File.join('characters', 'memory_piece')
 require_relative File.join('characters', 'timer')
-require_relative File.join('characters', 'hpgage')
 require_relative File.join('characters', 'redbull') #追加
+require_relative File.join('characters', 'hpgage')#追加
 require_relative 'map'
 
 # 視覚効果クラスの読み込み
@@ -25,7 +25,7 @@ class Game
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
     @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
     @first = true			      #
-    @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
+    @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
     @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
   end
 

@@ -5,7 +5,7 @@ class Player < Character
   attr_accessor :hp
   def initialize(obj, x, y)
     super(obj, x, y)
-    @hp = 300
+    @hp = 400
   end
 
   def hit(obj)
