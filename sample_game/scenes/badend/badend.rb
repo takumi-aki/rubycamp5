@@ -6,6 +6,8 @@ class Badend
 
   def initialize
     @badend_image = Image.load(BACKGROUND_IMG)
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "badend.mid"))
+    @first = true
   end
 
   def draw
@@ -15,6 +17,11 @@ class Badend
   # シーン描画
   # スペースキーが押下されたらシーンを切り替えて次のシーンに遷移する
   def play
+    if @first
+      @bgm.play
+      @first = false
+    end
+  
     draw
     if Input.keyPush?(K_SPACE)
       Ugame.load_scenes
