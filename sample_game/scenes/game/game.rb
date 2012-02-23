@@ -57,9 +57,12 @@ class Game
       @shouts << @player.shout#<<はpush、配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
     end
     
-    #Boxをランダムに出現
-    if(rand(200) == 1) || @boxes.size == 0 #乱数で１が出た場合もしくは@boxesの配列の中身がなくなったら一個boxオブジェクトを生成
-      @boxes << Box.new(self, rand(700)+50, rand(500)+50)
+    #Boxをランダムに作成
+    #乱数で１が出た場合もしくは@boxesの配列の中身がなくなったら一個boxオブジェクトを生成
+    if(rand(200) == 1) || @boxes.size == 0
+      box = Box.new(self, safe_position(@player.x, 700),
+                          safe_position(@player.y, 500))
+      @boxes << box
     end
 
     #RedBullをランダムに出現
@@ -76,6 +79,16 @@ class Game
   end
 
   private
+
+  # プレイヤー座標と重ならない安全な座標を返す
+  def safe_position(player_postion, limit)
+    loop do
+      rand_num = rand(700) + 50
+      if rand_num < (player_postion - 40) || rand_num > (player_postion + 40)
+        return rand_num
+      end
+    end
+  end
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
