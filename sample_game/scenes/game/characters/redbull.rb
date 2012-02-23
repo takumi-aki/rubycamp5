@@ -6,7 +6,7 @@ class Redbull < Character
     super
     @count = 0
   end
-  
+
   def move
     @count += 2
     if @count >= 8
@@ -26,6 +26,8 @@ class Redbull < Character
     return unless obj.class == Player
     remove
     recovery
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "redbull.wav"))
+    play
   end
 
   private
@@ -38,5 +40,13 @@ class Redbull < Character
   
   def recovery
     @director.player.hp = 400
+  end
+
+  def play
+    @sound.play
+  end
+
+  def stop
+    @sound.stop
   end
 end
