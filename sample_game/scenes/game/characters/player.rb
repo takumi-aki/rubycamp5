@@ -2,7 +2,7 @@ require_relative  'character'
 require_relative  'player_shout'
 
 class Player < Character
-  attr_reader :hp
+  attr_accessor :hp
   def initialize(obj, x, y)
     super(obj, x, y)
     @hp = 300

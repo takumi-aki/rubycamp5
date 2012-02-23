@@ -8,8 +8,8 @@ class Redbull < Character
   end
   
   def move
-    @count += 3
-    if @count >= 5
+    @count += 2
+    if @count >= 8
       @count = 0
       @y += Math.tanh(@y)
       reset_collision_pos
@@ -25,8 +25,8 @@ class Redbull < Character
     # プレイヤー以外とぶつかった場合はなにもしない
     return unless obj.class == Player
     remove
+    recovery
   end
-
 
   private
   def char_image(image_file = nil)
@@ -34,5 +34,9 @@ class Redbull < Character
     img = Image.load(image_file)
     img.setColorKey([0, 0, 0])
     return img
-  end 
+  end
+  
+  def recovery
+    @director.player.hp = 300
+  end
 end
