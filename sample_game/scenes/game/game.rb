@@ -90,6 +90,11 @@ class Game
   def check_clear
     if Input.keyPush?(K_RETURN)
       # シーンを切り替え、エンディングシーンへ遷移
+      #ending_scene_name = :ending1
+      #if foo
+      #  ending_scene_name = :ending2
+      #end
+      Ending.staff_roll_type = :A       #クラスメソッド
       Scene.set_current_scene(:ending)
     end
   end
