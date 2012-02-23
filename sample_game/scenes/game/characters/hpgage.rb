@@ -4,7 +4,7 @@ require_relative  'character'
 class Hpgage < Character
   def initialize(obj, x, y, player)
     @images = [
-      Image.load(File.join(File.dirname(__FILE__), "..", "images", "HP_25.png")),
+      Image.load(File.join(File.dirname(__FILE__), "..", "images", "HP_0.png")),
       Image.load(File.join(File.dirname(__FILE__), "..", "images", "HP_25.png")),
       Image.load(File.join(File.dirname(__FILE__), "..", "images", "HP_50.png")),
       Image.load(File.join(File.dirname(__FILE__), "..", "images", "HP_75.png")),
