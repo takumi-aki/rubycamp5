@@ -94,7 +94,9 @@ class Game
       #if foo
       #  ending_scene_name = :ending2
       #end
-      Ending.staff_roll_type = :A       #クラスメソッド
+      Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
+      Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
+      Ending.staff_roll_type = :C  if 6 < @got_pieces.size
       Scene.set_current_scene(:ending)
     end
   end
