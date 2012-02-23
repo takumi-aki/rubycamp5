@@ -1,4 +1,5 @@
 require_relative 'character'
+#require_relative 'memory_piece'
 
 class PlayerShout < Character
   DEFAULT_HP = 400
@@ -6,6 +7,7 @@ class PlayerShout < Character
   def initialize(director, x, y, hp = DEFAULT_HP)
     super(director, x, y)
     @hp = hp
+    #@director = director
   end
 
   def move
@@ -24,6 +26,7 @@ class PlayerShout < Character
     return unless obj.class == Box
     remove
     obj.crash
+    #@director.memory_pieces << MemoryPiece.new(self, 100, 100)
   end
 
 

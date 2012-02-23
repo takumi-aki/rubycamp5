@@ -11,8 +11,8 @@ class Box < Character
     #@count += 1
     #if @count >= 20
       @count = 0
-      @x += Math.cos(@y+@x+@x)
-      @y += Math.cos(@x+@y)
+      @x += Math.cos(@y) * 5
+      @y += Math.cos(@x) * 5
       reset_collision_pos
     #end
   end
@@ -30,6 +30,7 @@ class Box < Character
     crash_effect = CrashEffect.new(@director, @x, @y)
     @director.effects << crash_effect
     @director.boxes.delete_if {|box| box == self }
+    @director.memory_pieces << MemoryPiece.new(self,@x,@y)
   end
 
 

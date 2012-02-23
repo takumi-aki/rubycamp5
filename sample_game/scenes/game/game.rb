@@ -12,13 +12,14 @@ require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, :redbulls
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, :redbulls, :memory_pieces
 
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
     @boxes  = []                              # 敵キャラオブジェクトの配列を作成
-    @memory_pieces = [MemoryPiece.new(self, 100, 100)] # 記憶のかけらの配列を作成
+    #@memory_pieces = [MemoryPiece.new(self, 100, 100)] # 記憶のかけらの配列を作成
+    @memory_pieces = []
     @shouts = []                              # 弾丸の配列を初期化
     @effects = []                             # 視覚効果オブジェクトの配列を初期化
     @map = Map.new(@player)                   # 背景マップ描画用オブジェクトを生成
@@ -26,7 +27,6 @@ class Game
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
     @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
-
   end
 
   # 本シーンの主描画メソッド
