@@ -4,8 +4,8 @@ class Opening
 # class Opening
 #BACKGROUND_IMG = File.join(File.dirname(__FILE__), "images", "title_background.png")
  BACKGROUND_IMG = [Image.load(File.join(File.dirname(__FILE__), "images", "opening1.PNG")),
-		   Image.load(File.join(File.dirname(__FILE__), "images", "test1.JPG")),
-		   Image.load(File.join(File.dirname(__FILE__), "images", "test2.JPG")),]
+		   Image.load(File.join(File.dirname(__FILE__), "images", "opening2.PNG")),
+		   Image.load(File.join(File.dirname(__FILE__), "images", "howto.PNG")),]
   def initialize
     #@title_image = Image.load(BACKGROUND_IMG)
      @title_images = BACKGROUND_IMG
