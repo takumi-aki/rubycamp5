@@ -121,7 +121,7 @@ class Game
   end
  
   def check_badend
-    if Input.keyPush?(K_Z)
+    if Input.keyPush?(K_J)
      #  シーンを切り替え、バッドエンディングシーンへ遷移
      # BGMを止める
      @bgm.stop

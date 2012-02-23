@@ -32,7 +32,7 @@ class Opening
   def draw
     Window.draw(0, 0, @title_images[@cnt.to_i])	#draw‚ªtitle_images
     if @cnt.to_i < @title_images.size	#@cnt‚ªŠG‚Ì–‡”ˆÈ“à‚¾‚Á‚½‚ç
-       @cnt += 1.0 / 250	#250‰ñdraw‚ªŒÄ‚Ño‚³‚ê‚ÄImage‚ª•Ï‚í‚é
+       @cnt += 1.0 / 290	#290‰ñdraw‚ªŒÄ‚Ño‚³‚ê‚ÄImage‚ª•Ï‚í‚é
     end
     if @cnt.to_i == @title_images.size
       Scene.set_current_scene(:game)
