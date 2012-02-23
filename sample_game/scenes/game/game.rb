@@ -101,6 +101,8 @@ class Game
       Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
       Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
       Ending.staff_roll_type = :C  if 6 < @got_pieces.size
+      # BGMを止める。
+      @bgm.stop
       Scene.set_current_scene(:ending)
     end
   end
@@ -108,6 +110,8 @@ class Game
   def check_badend
     if Input.keyPush?(K_Z)
      #  シーンを切り替え、バッドエンディングシーンへ遷移
+     # BGMを止める
+     @bgm.stop
      Scene.set_current_scene(:badend)
     end
   end

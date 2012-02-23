@@ -15,8 +15,6 @@ class GetEffect < EffectBase
     #@images = @images.map{|i| i.setColorKey([0, 0, 0]) }
     #@counter = 0.0
   end
-  #
-
   #def move
    # @x -= @speed_x
    # @y -= @speed_y
