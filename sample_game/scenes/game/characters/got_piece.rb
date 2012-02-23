@@ -1,13 +1,15 @@
 require_relative 'character'
 
 # プレイヤーが集めた記憶の欠片を表示する
-class GotPiece < MemoryPiece
+class GotPiece < Character
   LEFT_WIDTH  = 672
   RIGHT_WIDTH = 736
   UP_HEIGHT   = 472
   DOWN_HEIGHT = 536
   
-  def initialize(director, alphabet)
+  attr_reader :type
+  
+  def initialize(director, type, alphabet)
     case alphabet
     when "ruby-r", "perl-p"
       x = LEFT_WIDTH
@@ -23,6 +25,7 @@ class GotPiece < MemoryPiece
       y = DOWN_HEIGHT
     end
     
+    @type = type
     @alphabet = alphabet
     super(director, x, y)
   end
@@ -30,6 +33,8 @@ class GotPiece < MemoryPiece
   # 動作しない
   def move
   end
+  
+  private
   
   def char_image(image_file = nil)
     # 文字の種類によって画像を切り替える

@@ -26,7 +26,7 @@ class Game
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
     @redbulls = []
-    @got_pieces = []
+    @got_pieces = []                          # 入手した記憶の欠片の配列を作成
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
   end
 

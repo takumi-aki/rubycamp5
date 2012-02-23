@@ -2,9 +2,19 @@ require_relative 'character'
 
 # 記憶の欠片（アルファベットのピース）を表現する。
 class MemoryPiece < Character
-  def initialize(director, x, y, alphabet = nil)
-    @alphabet ||= ["ruby-r", "ruby-u", "ruby-b", "ruby-y",
-                   "perl-p", "perl-e", "perl-r", "perl-l", ].sample
+  RUBY = 0
+  PERL = 1
+  
+  attr_reader :type
+  
+  def initialize(director, x, y, type = nil, alphabet = nil)
+    @type ||= rand(2)
+    if @type == RUBY
+      @alphabet ||= ["ruby-r", "ruby-u", "ruby-b", "ruby-y"].sample
+    else
+      @alphabet ||= ["perl-p", "perl-e", "perl-r", "perl-l"].sample
+    end
+    
     super(director, x, y)
   end
 
@@ -18,12 +28,22 @@ class MemoryPiece < Character
     @director.memory_pieces.delete_if {|memory_piece| memory_piece == self}
   end
 
+  # プレイヤーと当たったら画面から消して、取得した欠片ボードに表示させる
   def hit(obj)
     # プレイヤー以外ならなにもしない
     return unless obj.class == Player
-    # プレイヤーと当たったら画面から消して、取得した欠片ボードに表示させる
+    
     remove
-    @director.got_pieces << GotPiece.new(@director, @alphabet)
+    
+    @director.got_pieces << GotPiece.new(@director, @type, @alphabet)
+    # もし違う種類の欠片を手に入れたら、リセットする。
+    @director.got_pieces.each do |piece|
+      if piece.type != @type
+        p type
+        p @type
+        @director.got_pieces = []
+      end
+    end
   end
   
   private
