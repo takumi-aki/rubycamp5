@@ -28,6 +28,7 @@ class PlayerShout < Character
     obj.crash
     #@director.memory_pieces << MemoryPiece.new(self, 100, 100)
     @sound = Sound.new(File.join(File.dirname(__FILE__), "hit_shout.wav"))
+    @sound.setVolume(255)
     @sound.play
   end
 

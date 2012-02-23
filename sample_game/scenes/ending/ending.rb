@@ -18,6 +18,7 @@ class Ending
     # ”wŒi‰æ‘œ‚Ì“Ç‚İ‚İ
     #@ending_image = Image.load(BACKGROUND_IMG)
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "end.mid"))
+    @bgm.setVolume(250)
     @first = true
   end
 

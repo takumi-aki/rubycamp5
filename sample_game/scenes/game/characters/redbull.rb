@@ -27,6 +27,7 @@ class Redbull < Character
     remove
     recovery
     @sound = Sound.new(File.join(File.dirname(__FILE__), "get_redbull.wav"))
+    @sound.setVolume(255)
     play
   end
 

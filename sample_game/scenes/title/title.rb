@@ -10,6 +10,7 @@ class Title
                                 color: [255, 255, 0],  # フォント色を黄色に設定
                                 y: 380, bold: true)
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "title.mid"))
+    @bgm.setVolume(210)
     @first = true
   end
 

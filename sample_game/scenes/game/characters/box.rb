@@ -26,6 +26,7 @@ class Box < Character
     #p "Damage to player!"
     Scene.set_current_scene(:badend)
     @sound = Sound.new(File.join(File.dirname(__FILE__), "box_collision_player.wav"))
+    @sound.setVolume(255)
     @sound.play
   end
 
