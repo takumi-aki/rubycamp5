@@ -26,6 +26,7 @@ class Opening
     @cnt = 0.0
     @count = 0
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "opening.wav"))
+    @bgm.setVolume(255)#ƒ”ƒHƒŠƒ…[ƒ€
     @first = true
   end
 
