@@ -2,4 +2,4 @@
 
 git stash
 git pull --rebase
-git stash pop
+git stash pop || echo "failed git stash pop. you must run git stash drop, after merged."
