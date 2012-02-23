@@ -13,7 +13,7 @@ class PlayerShout < Character
   def move
     @y -= 10
     reset_collision_pos
-    @hp -= 10
+    @hp -= 10 if @hp > 0
     remove if @hp <= 0
   end
 

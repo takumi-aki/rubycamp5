@@ -26,6 +26,9 @@ class Ending
   # スペースキーまたはエンターキーが押下されたらプログラムを終了する
   def play
     draw  # エンディング画面を描画
-    exit if Input.keyPush?(K_SPACE) || Input.keyPush?(K_RETURN)
+    if Input.keyPush?(K_SPACE)
+      Ugame.load_scenes
+      Scene.set_current_scene(:title)
+    end
   end
 end

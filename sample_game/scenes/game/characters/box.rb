@@ -2,8 +2,9 @@ require_relative 'character'
 
 class Box < Character
   def initialize(director, x, y, image_file = nil)
-    super
+    super(director, x, y)
     @count = 0
+    @director = director
   end
 
   # ‚Ó‚í‚Ó‚í‚µ‚½“®‚«‚ð•\Œ»
@@ -30,7 +31,7 @@ class Box < Character
     crash_effect = CrashEffect.new(@director, @x, @y)
     @director.effects << crash_effect
     @director.boxes.delete_if {|box| box == self }
-    @director.memory_pieces << MemoryPiece.new(self,@x,@y)
+    @director.memory_pieces << MemoryPiece.new(@director,@x,@y)
   end
 
 

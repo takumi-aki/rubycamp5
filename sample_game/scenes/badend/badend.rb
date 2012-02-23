@@ -17,6 +17,7 @@ class Badend
   def play
     draw
     if Input.keyPush?(K_SPACE)
+      Ugame.load_scenes
       Scene.set_current_scene(:title)
     end
     if Input.keyPush?(K_ESCAPE)
