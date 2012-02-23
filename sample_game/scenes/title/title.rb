@@ -6,18 +6,6 @@ class Title
   def initialize
     @title_image = Image.load(BACKGROUND_IMG)
 
-    # タイトル画面に表示する説明文を定義
-    str  =<<-EOF
-    (仮)本ゲームはRuby合宿2012春5班のシューティングゲームです。
-    EOF
-
-    # テキストオブジェクトを生成
-    # この例のように、引数が横に長くなって見づらい時は、途中で改行を入れて
-    # も良い。
-    @describe_text = Text.new(str, x: 10, y: 250, font_size: 24,
-                                     color: [255, 255, 0],  # フォント色を黄色に設定
-                                     bold: true)
-
     # ゲームスタートを促すメッセージを作成
     @announce_text = Text.new("Please スペースキー", 
                                 color: [255, 255, 0],  # フォント色を黄色に設定
@@ -27,9 +15,6 @@ class Title
   def draw
     Window.draw(0, 0, @title_image)
 
-    # 定義済みのテキストをウィンドウに描画する
-    @describe_text.draw
-    @announce_text.draw
   end
 
   # シーン描画
