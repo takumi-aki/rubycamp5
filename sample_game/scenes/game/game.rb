@@ -91,15 +91,18 @@ class Game
   # ゲームのクリア条件を判定する
   # ※ ここでは単にリターンキーの押下でゲーム終了としている
   def check_clear
-    if Input.keyPush?(K_RETURN) || piece_box.complate?(:ruby)
-      # シーンを切り替え、エンディングシーンへ遷移
-      #ending_scene_name = :ending1
-      #if foo
-      #  ending_scene_name = :ending2
-      #end
-      Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
-      Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
-      Ending.staff_roll_type = :C  if 6 < @got_pieces.size
+    if Input.keyPush?(K_RETURN) || piece_box.complate?(:ruby) || piece_box.complate?(:perl)
+      if piece_box.complate?(:ruby)
+        Ending.image_type = :Ruby
+        Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
+        Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
+        Ending.staff_roll_type = :C  if 6 < @got_pieces.size
+      elsif Input.keyPush?(K_RETURN) || piece_box.complate?(:perl)
+        Ending.image_type = :Perl
+        Ending.staff_roll_type = :D  if @got_pieces.size <= 4     #クラスメソッド
+        Ending.staff_roll_type = :E  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
+        Ending.staff_roll_type = :F  if 6 < @got_pieces.size
+      end
       # BGMを止める。
       @bgm.stop
       Scene.set_current_scene(:ending)
