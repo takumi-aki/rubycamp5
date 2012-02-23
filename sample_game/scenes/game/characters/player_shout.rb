@@ -27,10 +27,9 @@ class PlayerShout < Character
     remove
     obj.crash
     #@director.memory_pieces << MemoryPiece.new(self, 100, 100)
-    @sound = Sound.new(File.join(File.dirname(__FILE__), "player_shout.wav"))
-    play
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "hit_shout.wav"))
+    @sound.play
   end
-
 
   private
 
@@ -40,12 +39,4 @@ class PlayerShout < Character
     img.setColorKey([0, 0, 0])
     return img
   end
-
-  def play
-   @sound.play
- end
-
- def stop
-   @sound.stop
- end
 end

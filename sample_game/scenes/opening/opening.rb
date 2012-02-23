@@ -25,7 +25,7 @@ class Opening
                                 x:520,y: 580, bold: true)
     @cnt = 0.0
     @count = 0
-    @bgm = Sound.new(File.join(File.dirname(__FILE__), "key.mid"))
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "open.mid"))
     @first = true
   end
 
@@ -64,6 +64,7 @@ class Opening
     draw
     if Input.keyPush?(K_SPACE)
       Scene.set_current_scene(:game)
+      @bgm.stop
     end
   end
 end

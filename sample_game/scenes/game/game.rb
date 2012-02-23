@@ -31,7 +31,7 @@ class Game
     @got_pieces = []                         # 入手した記憶の欠片の配列（描画用）
     @piece_box = PieceBox.new                # 入手した記憶の欠片管理用のクラス作成
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
-    @sound = Sound.new(File.join(File.dirname(__FILE__), "hasseion.wav"))
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "player_shout.wav"))
   end
 
   # 本シーンの主描画メソッド
@@ -121,7 +121,7 @@ class Game
   end
  
   def check_badend
-    if Input.keyPush?(K_J)
+    if Input.keyPush?(K_Z)
      #  シーンを切り替え、バッドエンディングシーンへ遷移
      # BGMを止める
      @bgm.stop

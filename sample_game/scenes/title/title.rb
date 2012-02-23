@@ -9,6 +9,8 @@ class Title
     @announce_text = Text.new("Please スペースキー", 
                                 color: [255, 255, 0],  # フォント色を黄色に設定
                                 y: 380, bold: true)
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "title.mid"))
+    @first = true
   end
 
   def draw
@@ -18,11 +20,17 @@ class Title
   # シーン描画
   # スペースキーが押下されたらシーンを切り替えて次のシーンに遷移する
   def play
+    if @first
+      @bgm.play
+      @first = false
+    end
     draw
     if Input.keyPush?(K_SPACE)
       Scene.set_current_scene(:opening)
+      @bgm.stop
     end
     if Input.keyPush?(K_ESCAPE)
+      @bgm.stop
       exit
     end
   end

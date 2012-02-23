@@ -25,8 +25,8 @@ class Box < Character
     # ƒvƒŒƒCƒ„[‚Æ‚Ô‚Â‚©‚Á‚½‚Æ‚«‚Ìˆ—
     #p "Damage to player!"
     Scene.set_current_scene(:badend)
-    @sound = Sound.new(File.join(File.dirname(__FILE__), "box.wav"))
-    play
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "box_collision_player.wav"))
+    @sound.play
   end
 
   def crash
@@ -45,12 +45,4 @@ class Box < Character
     img.setColorKey([0, 0, 0])
     return img
   end
-
- def play
-   @sound.play
- end
-
- def stop
-   @sound.stop
- end
 end

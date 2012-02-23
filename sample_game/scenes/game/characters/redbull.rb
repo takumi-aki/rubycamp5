@@ -26,7 +26,7 @@ class Redbull < Character
     return unless obj.class == Player
     remove
     recovery
-    @sound = Sound.new(File.join(File.dirname(__FILE__), "redbull.wav"))
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "get_redbull.wav"))
     play
   end
 

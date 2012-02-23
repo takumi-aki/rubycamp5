@@ -17,7 +17,7 @@ class Ending
   def initialize
     # 背景画像の読み込み
     #@ending_image = Image.load(BACKGROUND_IMG)
-
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "end.mid"))
     @first = true
   end
 
@@ -31,6 +31,7 @@ class Ending
   # スペースキーまたはエンターキーが押下されたらプログラムを終了する
   def play
     if @first
+      @bgm.play
     # エンディングロールとして流すテキストを配列に格納する
     staff_roll_path = File.join(File.dirname(__FILE__), "ending_roll_#{@@staff_roll_type}.txt")
     @staff_roll = File.read(staff_roll_path).split(/\n/)
@@ -50,6 +51,7 @@ class Ending
     if Input.keyPush?(K_SPACE)
       Ugame.load_scenes
       Scene.set_current_scene(:title)
+      @bgm.stop
     end
   end
 end
