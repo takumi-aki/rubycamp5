@@ -23,11 +23,11 @@ class Box < Character
     # プレイヤー以外とぶつかった場合はなにもしない
     return unless obj.class == Player
     # プレイヤーとぶつかったときの処理
-    #p "Damage to player!"
-    Scene.set_current_scene(:badend)
     @sound = Sound.new(File.join(File.dirname(__FILE__), "box_collision_player.wav"))
     @sound.setVolume(255)
     @sound.play
+    @director.bgm.stop
+    Scene.set_current_scene(:badend)
   end
 
   def crash

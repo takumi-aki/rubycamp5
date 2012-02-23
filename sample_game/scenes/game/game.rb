@@ -15,7 +15,7 @@ require_relative File.join('effects', 'crash_effect')
 
 class Game
   attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, 
-                :redbulls, :memory_pieces, :piece_box, :got_pieces
+                :redbulls, :memory_pieces, :piece_box, :got_pieces, :bgm
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成

@@ -21,11 +21,12 @@ class Badend
       @bgm.play
       @first = false
     end
-  
     draw
     if Input.keyPush?(K_SPACE)
+      @bgm.stop
       Ugame.load_scenes
       Scene.set_current_scene(:title)
+      @first = false
     end
     if Input.keyPush?(K_ESCAPE)
       exit

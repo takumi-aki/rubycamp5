@@ -9,12 +9,6 @@ class Player < Character
     @hp = 400
   end
 
-  def hit(obj)
-    #puts "Hit to #{obj} by Player"
-    Scene.set_current_scene(:badend) if obj.class == Box#obj.instance_of?(Box)
-    p obj
-  end
-
   # ‹©‚ÔBŽÀÛ‚Í“G‚ð“|‚·’e‚ðì‚éB
   def shout
     @hp -= 10 if @hp > 0
