@@ -8,4 +8,5 @@ Scene.set_current_scene(:title)
 Window.loop do
   break if Input.keyPush?(K_ESCAPE)
   Scene.play_scene
+  
 end
