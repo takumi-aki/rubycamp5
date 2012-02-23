@@ -2,10 +2,10 @@ require_relative 'character'
 
 # プレイヤーが集めた記憶の欠片を表示する
 class GotPiece < Character
-  LEFT_WIDTH  = 672
-  RIGHT_WIDTH = 736
-  UP_HEIGHT   = 472
-  DOWN_HEIGHT = 536
+  LEFT_WIDTH  = 672 - 20
+  RIGHT_WIDTH = 736 - 20
+  UP_HEIGHT   = 472 - 20
+  DOWN_HEIGHT = 536 - 20
   
   attr_accessor :type, :alphabet
   
