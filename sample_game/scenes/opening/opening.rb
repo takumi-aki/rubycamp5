@@ -37,7 +37,7 @@ class Opening
     end
     # 定義済みのテキストをウィンドウに描画する
     @announce_text.draw
-
+   
     # カタカタを画面に表示する。
     if @cnt.to_i == 0
       # @countが4(1/150秒)の倍数になったらカタカタを追加する。
