@@ -5,7 +5,8 @@ class Opening
 #BACKGROUND_IMG = File.join(File.dirname(__FILE__), "images", "title_background.png")
  BACKGROUND_IMG = [Image.load(File.join(File.dirname(__FILE__), "images", "opening1.PNG")),
 		   Image.load(File.join(File.dirname(__FILE__), "images", "opening2.PNG")),
-		   Image.load(File.join(File.dirname(__FILE__), "images", "howto.PNG")),]
+		   Image.load(File.join(File.dirname(__FILE__), "images", "opening3.PNG")),
+                   Image.load(File.join(File.dirname(__FILE__), "images", "howto.PNG")),]
  KEYBOARD_IMG = Image.load(File.join(File.dirname(__FILE__),"images", "katakata.PNG"))
 
   def initialize
@@ -21,7 +22,7 @@ class Opening
     # ゲームスタートを促すメッセージを作成
     @announce_text = Text.new("シーンスキップ：PUSH SPACE", 
                                 color: [255, 0, 0],  # フォント色を赤色に設定
-                                x:530,y: 580, bold: true)
+                                x:520,y: 580, bold: true)
     @cnt = 0.0
     @count = 0
   end
