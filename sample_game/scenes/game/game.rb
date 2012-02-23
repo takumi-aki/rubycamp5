@@ -26,7 +26,8 @@ class Game
     @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
-    @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
+    #@redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
+    @redbulls = []
   end
 
   # 本シーンの主描画メソッド
@@ -51,10 +52,15 @@ class Game
       @shouts << @player.shout#<<はpush、配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
     end
 
+    #Boxをランダムに出現
     if(rand(200) == 1)
       @boxes << Box.new(self, rand(700)+50, rand(500)+50)
     end
 
+    #RedBullをランダムに出現
+    if(rand(800) == 1)
+      @redbulls << Redbull.new(self, rand(700)+50, rand(500)+50)
+    end
     check_collision # 当たり判定の一括処理
     check_clear     # ゲームクリア条件の判定処理
     check_badend    # ゲームオーバー条件の判定処理
@@ -65,7 +71,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @boxes + @shouts + @effects + @memory_pieces + [@timer] + [@hpgage] + @redbulls
+    return [@player] + @boxes + @shouts + @memory_pieces + @effects + [@timer] + [@hpgage] + @redbulls
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
