@@ -63,7 +63,7 @@ class Game
     #乱数で１が出た場合もしくは@boxesの配列の中身がなくなったら一個boxオブジェクトを生成
     if(rand(200) == 1) || @boxes.size == 0
       box = Box.new(self, safe_position(@player.x, 700),
-                          safe_position(@player.y, 500))
+                          safe_position(@player.y, 350))
       @boxes << box
     end
 
@@ -81,7 +81,7 @@ class Game
   # プレイヤー座標と重ならない安全な座標を返す
   def safe_position(player_postion, limit)
     loop do
-      rand_num = rand(700) + 50
+      rand_num = rand(limit) + 50
       if rand_num < (player_postion - 40) || rand_num > (player_postion + 40)
         return rand_num
       end

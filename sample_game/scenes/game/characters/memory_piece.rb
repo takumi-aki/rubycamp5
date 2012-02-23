@@ -39,10 +39,18 @@ class MemoryPiece < Character
     piece = GotPiece.new(@director, @type, @alphabet)
     @director.piece_box.add(piece)
     
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "get_piece.wav"))
+    @sound.setVolume(255)
+    @sound.play
+    
     # もし違う種類の欠片を手に入れたら、リセットする。
     if @director.piece_box.different?
       @director.got_pieces = []
       @director.piece_box.reset
+      
+      @sound = Sound.new(File.join(File.dirname(__FILE__), "piece_miss.wav"))
+      @sound.setVolume(255)
+      @sound.play
     end
   end
   

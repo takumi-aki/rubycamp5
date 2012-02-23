@@ -8,6 +8,7 @@ class Timer < Character
     @sec = sec
     @timeouted = false
     @font = Font.new(32)
+    # @font_color_yellow = [255, 255, 0]
   end
 
   # タイマーを開始する。時間になったら@timeoutedがtrueになる。
@@ -31,6 +32,9 @@ class Timer < Character
     Window.drawFont(@x, @y, sprintf("%05.2f", left_sec), @font)
     if left_sec == 0
       @timeouted = true
+      @sound = Sound.new(File.join(File.dirname(__FILE__), "box_collision_player.wav"))
+      @sound.setVolume(255)
+      @sound.play
       Scene.set_current_scene(:badend)
     end
   end
