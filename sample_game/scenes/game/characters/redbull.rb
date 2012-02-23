@@ -15,14 +15,19 @@ class Redbull < Character
       reset_collision_pos
     end
   end
+
   def remove
-    @director.redbull.delete_if {|redbull| redbull == self }
+    @director.redbulls.delete_if {|redbull| redbull == self }
   end
+
+
   def hit(obj)
     # プレイヤー以外とぶつかった場合はなにもしない
     return unless obj.class == Player
     remove
   end
+
+
   private
   def char_image(image_file = nil)
     image_file ||= File.join(File.dirname(__FILE__), "..", "images", "redbul.png")

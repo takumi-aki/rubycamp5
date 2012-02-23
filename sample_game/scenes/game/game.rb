@@ -12,7 +12,7 @@ require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, :redbulls
 
   # シーン情報の初期化
   def initialize
@@ -25,7 +25,7 @@ class Game
     @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
-    @redbull = [Redbull.new(self, 300, 200)]  # 水の配列を作成追加
+    @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
 
   end
 
@@ -65,7 +65,7 @@ class Game
 
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
-    return [@player] + @boxes + @shouts + @effects + @memory_pieces + [@timer] + [@hpgage] + @redbull
+    return [@player] + @boxes + @shouts + @effects + @memory_pieces + [@timer] + [@hpgage] + @redbulls
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
