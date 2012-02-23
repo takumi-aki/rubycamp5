@@ -7,13 +7,15 @@ require_relative File.join('characters', 'redbull') #追加
 require_relative File.join('characters', 'hpgage')#追加
 require_relative File.join('characters', 'got_piece')
 require_relative 'map'
+require_relative 'piece_box'
 
 # 視覚効果クラスの読み込み
 require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, :redbulls, :memory_pieces, :got_pieces
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, 
+                :redbulls, :memory_pieces, :piece_box, :got_pieces
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
@@ -26,11 +28,12 @@ class Game
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
     @redbulls = []
-    @got_pieces = []                          # 入手した記憶の欠片の配列を作成
+    @got_pieces = []                         # 入手した記憶の欠片の配列（描画用）
+    @piece_box = PieceBox.new                # 入手した記憶の欠片管理用のクラス作成
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
   end
 
-  #-------------------本シーンの主描画メソッド
+  # 本シーンの主描画メソッド
   def play
     if @first
       @timer.start
@@ -66,13 +69,7 @@ class Game
     check_collision # 当たり判定の一括処理
     check_clear     # ゲームクリア条件の判定処理
     check_badend    # ゲームオーバー条件の判定処理
-    
-
-    
-  end   #-------------------本シーンの主描画メソッド終了
-
-
-
+  end
 
   def stop
     @bgm.stop
@@ -94,7 +91,7 @@ class Game
   # ゲームのクリア条件を判定する
   # ※ ここでは単にリターンキーの押下でゲーム終了としている
   def check_clear
-    if Input.keyPush?(K_RETURN)
+    if Input.keyPush?(K_RETURN) || piece_box.complate?(:ruby)
       # シーンを切り替え、エンディングシーンへ遷移
       #ending_scene_name = :ending1
       #if foo
@@ -103,6 +100,8 @@ class Game
       Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
       Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
       Ending.staff_roll_type = :C  if 6 < @got_pieces.size
+      # BGMを止める。
+      @bgm.stop
       Scene.set_current_scene(:ending)
     end
   end
@@ -110,6 +109,8 @@ class Game
   def check_badend
     if Input.keyPush?(K_Z)
      #  シーンを切り替え、バッドエンディングシーンへ遷移
+     # BGMを止める
+     @bgm.stop
      Scene.set_current_scene(:badend)
     end
   end
