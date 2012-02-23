@@ -55,10 +55,8 @@ class Game
       @shouts << @player.shout#<<はpush、配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
     end
     
-    
-
     #Boxをランダムに出現
-    if(rand(200) == 1)
+    if(rand(200) == 1) || @boxes.size == 0 #乱数で１が出た場合もしくは@boxesの配列の中身がなくなったら一個boxオブジェクトを生成
       @boxes << Box.new(self, rand(700)+50, rand(500)+50)
     end
 
