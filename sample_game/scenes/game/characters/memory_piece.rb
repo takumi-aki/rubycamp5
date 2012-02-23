@@ -39,8 +39,6 @@ class MemoryPiece < Character
     piece = GotPiece.new(@director, @type, @alphabet)
     @director.piece_box.add(piece)
     
-    p @director.piece_box
-    
     # もし違う種類の欠片を手に入れたら、リセットする。
     if @director.piece_box.different?
       @director.got_pieces = []
