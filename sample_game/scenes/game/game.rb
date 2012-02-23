@@ -25,7 +25,7 @@ class Game
     @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570)      #HPゲージ追加
-    @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 400, 300)]  # 水の配列を作成追加
+    @redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
 
   end
 
