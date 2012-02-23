@@ -25,7 +25,7 @@ class Opening
                                 x:520,y: 580, bold: true)
     @cnt = 0.0
     @count = 0
-    @bgm = Sound.new(File.join(File.dirname(__FILE__), "open.mid"))
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "opening.wav"))
     @first = true
   end
 
