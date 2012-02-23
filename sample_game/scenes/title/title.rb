@@ -5,7 +5,6 @@ class Title
 
   def initialize
     @title_image = Image.load(BACKGROUND_IMG)
-
     # ゲームスタートを促すメッセージを作成
     @announce_text = Text.new("Please スペースキー", 
                                 color: [255, 255, 0],  # フォント色を黄色に設定
@@ -14,7 +13,6 @@ class Title
 
   def draw
     Window.draw(0, 0, @title_image)
-
   end
 
   # シーン描画

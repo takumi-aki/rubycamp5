@@ -31,6 +31,7 @@ class Game
     @got_pieces = []                         # 入手した記憶の欠片の配列（描画用）
     @piece_box = PieceBox.new                # 入手した記憶の欠片管理用のクラス作成
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
+    @sound = Sound.new(File.join(File.dirname(__FILE__), "hasseion.wav"))
   end
 
   # 本シーンの主描画メソッド
@@ -55,6 +56,7 @@ class Game
     if Input.keyPush?(K_X)
       return if @player.hp == 0
       @shouts << @player.shout#<<はpush、配列にたくさんのオブジェクトを突っ込む、全部オブジェクトだからできる
+      @sound.play
     end
     
     #Boxをランダムに作成
@@ -77,6 +79,10 @@ class Game
   def stop
     @bgm.stop
   end
+
+ def stop
+   @sound.stop
+ end
 
   private
 
