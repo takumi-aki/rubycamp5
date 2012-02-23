@@ -37,6 +37,6 @@ class Redbull < Character
   end
   
   def recovery
-    @director.player.hp = 300
+    @director.player.hp = 400
   end
 end
