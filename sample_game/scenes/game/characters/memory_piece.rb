@@ -2,16 +2,16 @@ require_relative 'character'
 
 # 記憶の欠片（アルファベットのピース）を表現する。
 class MemoryPiece < Character
-  RUBY = 0
-  PERL = 1
-  
   attr_reader :type
   
   def initialize(director, x, y, type = nil, alphabet = nil)
-    @type ||= rand(2)
-    if @type == RUBY
+    # ランダムにタイプを決める（:rubyか:perl）
+    @type ||= rand(2) == 1 ? :ruby : :perl
+    
+    case @type
+    when :ruby
       @alphabet ||= ["ruby-r", "ruby-u", "ruby-b", "ruby-y"].sample
-    else
+    when :perl
       @alphabet ||= ["perl-p", "perl-e", "perl-r", "perl-l"].sample
     end
     
@@ -36,13 +36,15 @@ class MemoryPiece < Character
     remove
     
     @director.got_pieces << GotPiece.new(@director, @type, @alphabet)
+    piece = GotPiece.new(@director, @type, @alphabet)
+    @director.piece_box.add(piece)
+    
+    p @director.piece_box
+    
     # もし違う種類の欠片を手に入れたら、リセットする。
-    @director.got_pieces.each do |piece|
-      if piece.type != @type
-        p type
-        p @type
-        @director.got_pieces = []
-      end
+    if @director.piece_box.different?
+      @director.got_pieces = []
+      @director.piece_box.reset
     end
   end
   

@@ -5,7 +5,7 @@ class Character
     @director = director
     @x, @y = x, y
     @image = char_image(image_file)
-    @distance  = 2
+    @distance  = 3
     @collision = CollisionBox.new(self, 0, 0,
                                   @image.width, @image.height)
   end

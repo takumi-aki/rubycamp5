@@ -7,13 +7,15 @@ require_relative File.join('characters', 'redbull') #追加
 require_relative File.join('characters', 'hpgage')#追加
 require_relative File.join('characters', 'got_piece')
 require_relative 'map'
+require_relative 'piece_box'
 
 # 視覚効果クラスの読み込み
 require_relative File.join('effects', 'effect_base')
 require_relative File.join('effects', 'crash_effect')
 
 class Game
-  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, :redbulls, :memory_pieces, :got_pieces
+  attr_accessor :player, :boxes, :shouts, :effects, :map, :timer, :hpgage, 
+                :redbulls, :memory_pieces, :piece_box, :got_pieces
   # シーン情報の初期化
   def initialize
     @player = Player.new(self, 400, 250)      # プレイヤーオブジェクトを生成
@@ -26,7 +28,8 @@ class Game
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
     @redbulls = []
-    @got_pieces = []                          # 入手した記憶の欠片の配列を作成
+    @got_pieces = []
+    @piece_box = PieceBox.new                # 入手した記憶の欠片管理用のクラス作成
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
   end
 
@@ -77,6 +80,7 @@ class Game
   # 画面上に描画するべき全ての要素を1つの配列として返す
   def draw_items
     return [@player] + @boxes + @shouts + @effects + @memory_pieces + [@timer] + [@hpgage] + @redbulls + @got_pieces
+    # + @piece_box.draw_items
   end
 
   # 画面上の全ての要素（キャラクタ）に対して、当たり判定を行う
@@ -88,7 +92,7 @@ class Game
   # ゲームのクリア条件を判定する
   # ※ ここでは単にリターンキーの押下でゲーム終了としている
   def check_clear
-    if Input.keyPush?(K_RETURN)
+    if Input.keyPush?(K_RETURN) || piece_box.complate?(:ruby)
       # シーンを切り替え、エンディングシーンへ遷移
       #ending_scene_name = :ending1
       #if foo

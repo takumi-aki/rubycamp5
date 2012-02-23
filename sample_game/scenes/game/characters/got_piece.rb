@@ -7,7 +7,7 @@ class GotPiece < Character
   UP_HEIGHT   = 472
   DOWN_HEIGHT = 536
   
-  attr_reader :type
+  attr_accessor :type, :alphabet
   
   def initialize(director, type, alphabet)
     case alphabet
