@@ -76,14 +76,6 @@ class Game
     check_badend    # ゲームオーバー条件の判定処理
   end
 
-  def stop
-    @bgm.stop
-  end
-
- def stop
-   @sound.stop
- end
-
   private
 
   # プレイヤー座標と重ならない安全な座標を返す

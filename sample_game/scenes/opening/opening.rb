@@ -25,6 +25,8 @@ class Opening
                                 x:520,y: 580, bold: true)
     @cnt = 0.0
     @count = 0
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "key.mid"))
+    @first = true
   end
 
   def draw
@@ -54,6 +56,10 @@ class Opening
   # シーン描画
   # スペースキーが押下されたらシーンを切り替えてゲームシーンに遷移する
   def play
+    if @first
+      @bgm.play
+      @first = false
+    end
     @count += 1
     draw
     if Input.keyPush?(K_SPACE)
