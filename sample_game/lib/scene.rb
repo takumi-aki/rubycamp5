@@ -9,6 +9,11 @@ class Scene
 
 
   def self.set_current_scene(scene_name)
+    if @@scenes[@@current_scene_name]
+      if @@scenes[@@current_scene_name].respond_to?(:stop)
+        @@scenes[@@current_scene_name].stop
+      end
+    end
     @@current_scene_name = scene_name.to_sym
   end
 

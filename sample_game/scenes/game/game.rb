@@ -26,14 +26,16 @@ class Game
     @timer = Timer.new(self, 0, 0, 60)        #タイマーオブジェクトを生成
     @first = true			      #
     @hpgage = Hpgage.new(self, 272, 570, @player)      #HPゲージ追加
-    #@redbulls = [Redbull.new(self, 300, 200), Redbull.new(self, 200, 300)]  # 水の配列を作成追加
     @redbulls = []
+    @bgm = Sound.new(File.join(File.dirname(__FILE__), "bgm.mid"))
   end
 
   # 本シーンの主描画メソッド
   def play
     if @first
       @timer.start
+      # ここでBGMの再生を開始する。
+      @bgm.play
       @first = false#追加
     end
     # まずは背景マップの描画を行う（drawメソッドはスクロール実行も兼ねる）
@@ -66,6 +68,9 @@ class Game
     check_badend    # ゲームオーバー条件の判定処理
   end
 
+  def stop
+    @bgm.stop
+  end
 
   private
 
