@@ -1,8 +1,6 @@
 # coding: Windows-31J
 
 class Ending
-  #BACKGROUND_IMG = File.join(File.dirname(__FILE__), "images", "ending_background.png")
-
     @@staff_roll_type = :A     #デフォルト
     @@image_type = :Ruby
   #クラスメソッド
@@ -16,7 +14,6 @@ class Ending
 
   def initialize
     # 背景画像の読み込み
-    #@ending_image = Image.load(BACKGROUND_IMG)
     @bgm = Sound.new(File.join(File.dirname(__FILE__), "end.mid"))
     @bgm.setVolume(250)
     @first = true
