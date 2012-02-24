@@ -3,8 +3,8 @@ require_relative File.join('characters', 'player_shout')
 require_relative File.join('characters', 'box')
 require_relative File.join('characters', 'memory_piece')
 require_relative File.join('characters', 'timer')
-require_relative File.join('characters', 'redbull') #追加
-require_relative File.join('characters', 'hpgage')#追加
+require_relative File.join('characters', 'redbull')
+require_relative File.join('characters', 'hpgage')
 require_relative File.join('characters', 'got_piece')
 require_relative 'map'
 require_relative 'piece_box'
