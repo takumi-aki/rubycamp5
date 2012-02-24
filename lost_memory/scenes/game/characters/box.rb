@@ -9,8 +9,6 @@ class Box < Character
 
   # ‚Ó‚í‚Ó‚í‚µ‚½“®‚«‚ð•\Œ»
   def move
-    #@count += 1
-    #if @count >= 20
       @count = 0
       @x += Math.cos(@y) * 5
       @y += Math.cos(@x) * 5

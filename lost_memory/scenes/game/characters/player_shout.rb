@@ -1,5 +1,4 @@
 require_relative 'character'
-#require_relative 'memory_piece'
 
 class PlayerShout < Character
   DEFAULT_HP = 400
@@ -26,7 +25,6 @@ class PlayerShout < Character
     return unless obj.class == Box
     remove
     obj.crash
-    #@director.memory_pieces << MemoryPiece.new(self, 100, 100)
     @sound = Sound.new(File.join(File.dirname(__FILE__), "hit_shout.wav"))
     @sound.setVolume(255)
     @sound.play

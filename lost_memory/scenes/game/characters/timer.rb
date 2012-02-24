@@ -8,7 +8,6 @@ class Timer < Character
     @sec = sec
     @timeouted = false
     @font = Font.new(32)
-    # @font_color_yellow = [255, 255, 0]
   end
 
   # タイマーを開始する。時間になったら@timeoutedがtrueになる。

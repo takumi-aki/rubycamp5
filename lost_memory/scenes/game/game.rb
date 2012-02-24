@@ -40,7 +40,7 @@ class Game
       @timer.start
       # ここでBGMの再生を開始する。
       @bgm.play
-      @first = false#追加
+      @first = false
     end
     # まずは背景マップの描画を行う（drawメソッドはスクロール実行も兼ねる）
     @map.move

@@ -1,21 +1,20 @@
 # coding: Windows-31J
 
 class Opening
-# class Opening
-#BACKGROUND_IMG = File.join(File.dirname(__FILE__), "images", "title_background.png")
- BACKGROUND_IMG = [Image.load(File.join(File.dirname(__FILE__), "images", "opening1.PNG")),
-		   Image.load(File.join(File.dirname(__FILE__), "images", "opening2.PNG")),
-		   Image.load(File.join(File.dirname(__FILE__), "images", "opening3.PNG")),
-                   Image.load(File.join(File.dirname(__FILE__), "images", "howto.PNG")),]
- KEYBOARD_IMG = Image.load(File.join(File.dirname(__FILE__),"images", "katakata.PNG"))
+  BACKGROUND_IMG = [
+    Image.load(File.join(File.dirname(__FILE__), "images", "opening1.PNG")),
+    Image.load(File.join(File.dirname(__FILE__), "images", "opening2.PNG")),
+    Image.load(File.join(File.dirname(__FILE__), "images", "opening3.PNG")),
+    Image.load(File.join(File.dirname(__FILE__), "images", "howto.PNG")),
+  ]
+  KEYBOARD_IMG = Image.load(File.join(File.dirname(__FILE__),"images", "katakata.PNG"))
 
   def initialize
-    #@title_image = Image.load(BACKGROUND_IMG)
      @title_images = BACKGROUND_IMG
 
      @katakata_positions = []
 
-   # テキストオブジェクトを生成
+    # テキストオブジェクトを生成
     # この例のように、引数が横に長くなって見づらい時は、途中で改行を入れて
     # も良い。
 
