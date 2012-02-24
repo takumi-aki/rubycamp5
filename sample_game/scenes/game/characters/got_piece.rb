@@ -12,7 +12,7 @@ class GotPiece < Character
   RIGHT_UP_WIDTH    = 720
   RIGHT_UP_HEIGHT   = 460
   #‰E‰º
-  RIGHT_DOWN_WIDTH  = 703
+  RIGHT_DOWN_WIDTH  = 700
   RIGHT_DOWN_HEIGHT = 503
   
   attr_accessor :type, :alphabet
