@@ -103,12 +103,12 @@ class Game
   # ※ ここでは単にリターンキーの押下でゲーム終了としている
   def check_clear
     if Input.keyPush?(K_RETURN) || piece_box.complate?(:ruby) || piece_box.complate?(:perl)
-      if piece_box.complate?(:ruby)
+      if piece_box.complate?(:ruby) || Input.keyPush?(K_RETURN)
         Ending.image_type = :Ruby
         Ending.staff_roll_type = :A  if @got_pieces.size <= 4     #クラスメソッド
         Ending.staff_roll_type = :B  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
         Ending.staff_roll_type = :C  if 6 < @got_pieces.size
-      elsif Input.keyPush?(K_RETURN) || piece_box.complate?(:perl)
+      elsif piece_box.complate?(:perl)
         Ending.image_type = :Perl
         Ending.staff_roll_type = :D  if @got_pieces.size <= 4     #クラスメソッド
         Ending.staff_roll_type = :E  if ((4 < @got_pieces.size)&&(@got_pieces.size <= 6))
@@ -121,7 +121,7 @@ class Game
   end
  
   def check_badend
-    if Input.keyPush?(K_Z)
+    if Input.keyPush?(K_J)
      #  シーンを切り替え、バッドエンディングシーンへ遷移
      # BGMを止める
      @bgm.stop
